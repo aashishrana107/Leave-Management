@@ -42,7 +42,12 @@ namespace leave_management
             //Add AutoMapper Ashish
             services.AddAutoMapper(typeof(Maps));
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+
+            //Show Employee List 
+            //services.AddDefaultIdentity<Employee>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<Employee>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -51,7 +56,8 @@ namespace leave_management
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        //public void Configure(IApplicationBuilder app, IWebHostEnvironment env,UserManager<Employee> userManager, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,UserManager<Employee> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
