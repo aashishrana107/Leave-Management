@@ -37,7 +37,7 @@ namespace leave_management
 
             //Add Reference With Contract Ashish
             services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
-            services.AddScoped<ILeaveHistoryRepository, LeaveHistoryRepository>();
+            services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
             services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
             //Add AutoMapper Ashish
             services.AddAutoMapper(typeof(Maps));

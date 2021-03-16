@@ -120,10 +120,10 @@ namespace leave_management.Controllers
                 int idd=model.Id;
                 if(!ModelState.IsValid)
                 {
-                    //var leaveallocation = _repoleaveAllocation.FindById(idd);
-                    //var model1 = _mapper.Map<EditLeaveAllocationVM>(leaveallocation);
-                    //model1.NumberOfDays = model.NumberOfDays;
-                    return View(model);
+                    var leaveallocation = _repoleaveAllocation.FindById(idd);
+                    var model1 = _mapper.Map<EditLeaveAllocationVM>(leaveallocation);
+                    model1.NumberOfDays = model.NumberOfDays;
+                    return View(model1);
                 }
                 var record = _repoleaveAllocation.FindById(model.Id);
                 //var allocation = _mapper.Map<LeaveAllocation>(model);
