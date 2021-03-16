@@ -37,7 +37,7 @@ namespace leave_management.Controllers
         // GET: LeaveRequest
         public ActionResult Index()
         {
-            var leaveRequests = _repoleaverequest.FindAll();
+            var leaveRequests = _repoleaverequest.FindAll().Where(x=>x.CancelRequest==false).ToList();
             var leaveRequestsModel = _mapper.Map<List<LeaveRequestVM>>(leaveRequests);
             var model = new AdminLeaveRequestViewVM
             {
@@ -163,7 +163,8 @@ namespace leave_management.Controllers
                     Approved = null,
                     DateRequested = DateTime.Now,
                     DateActioned = DateTime.Now,
-                    LeaveTypeId=model.LeaveTypeId
+                    LeaveTypeId=model.LeaveTypeId,
+                    CommentRequest=model.CommentRequest
                 };
 
                 var leaverequest = _mapper.Map<LeaveRequest>(leaveRequestModel);
@@ -224,6 +225,23 @@ namespace leave_management.Controllers
                 return View();
             }
         }
+
+        public ActionResult CancelRequest(int id)
+        {
+            try
+            {
+                var requestcancel = _repoleaverequest.FindById(id);
+                requestcancel.CancelRequest = true;
+                _repoleaverequest.Update(requestcancel);
+            }
+            catch
+            { }
+            return RedirectToAction(nameof(MyLeave));
+        }
+
+
+
+
         // GET: LeaveRequestController/Delete/5
         public ActionResult Delete(int id)
         {

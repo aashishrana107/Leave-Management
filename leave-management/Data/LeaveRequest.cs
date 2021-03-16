@@ -26,5 +26,8 @@ namespace leave_management.Data
         [ForeignKey("ApprovedById")]
         public Employee ApprovedBy { get; set; }
         public string ApprovedById { get; set; }
+        public bool CancelRequest { get; set; }
+        [MaxLength(300)]
+        public string CommentRequest { get; set; }
     }
 }

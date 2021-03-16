@@ -32,6 +32,11 @@
                 </div>
             </div>
             <div class="form-group">
+                <label asp-for="CommentRequest" class="control-label"></label>
+                <input asp-for="CommentRequest" class="form-control" />
+                <span asp-validation-for="CommentRequest" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Request Leave" class="btn btn-primary" />
             </div>
         </form>
